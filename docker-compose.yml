@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+    app:
+        image: php:apache
+        container_name: webapp
+        restart: always
+        volumes:
+            - ./website/index.php:/var/www/html/index.php
+        environment:
+            USERNAME: toto
+            PASSWORD: python
+        depends_on:
+            - api
+        ports:
+            - 8080:80
+
+    api:
+        image: api
+        container_name: api_pozos
+        restart: always
+        volumes:
+            - ./simple_api/student_age.json:/data/student_age.json
+        ports:
+            - 5000:5000
