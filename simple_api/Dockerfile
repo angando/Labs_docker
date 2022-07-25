@@ -28,8 +28,11 @@ EXPOSE 5000
 # CREATION DU VOLUME PERSISTANT OU SERONT STOCKEES LES DATAS DE STUDENTS
 VOLUME /data
 
+#NE pas faire un copy des fichiers qui varient car il faudra refaire un build pour faire la mise à jour
+#le mieux serait de démarrer l'application en mappant le fichier dans l'application
+#exemple: docker run --name toto -v student_age.json:/data/student_age.json
 # COPY DU FICHIER DES NOMS DE ETUDIANTS DANS LE POINT DE MONTAGE
-COPY  student_age.json /data/
+#COPY  student_age.json /data/
 
 # DÉMARRAGE DES SERVICES LORS DE L'EXÉCUTION DE L'IMAGE
 CMD [ "python", "./student_age.py" ]
