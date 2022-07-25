@@ -21,5 +21,6 @@ services:
         restart: always
         volumes:
             - ./simple_api/student_age.json:/data/student_age.json
-        ports:
-            - 5000:5000
+    #    ports:
+    #       - 5000:5000
+    #On n'a plus besoin d'exposer sur le port 5000 car communication en interne
